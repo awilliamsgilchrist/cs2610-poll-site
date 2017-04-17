@@ -1,0 +1,20 @@
+h1 {
+    text-align: center;
+}
+
+body {
+    background-color: #ffc1c1;
+}
+
+.li-one {
+    background-color: #66a0ff;
+}
+
+.li-two {
+    background-color: #a5a5a5;
+}
+
+li a {
+    text-decoration: none;
+    color: #000000;
+}

@@ -1,0 +1,16 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+
+<h1>{{ question.questionText }}</h1>
+
+<ul>
+    {% for choice in question.choice_set.all %}
+    {% if forloop.counter|divisibleby:2 %}
+    <li class="li-one">{{ choice.choiceText }} -- {{choice.votes }} vote{{ choice.votes|pluralize }}</li>
+    {% else %}
+    <li class="li-two">{{ choice.choiceText }} -- {{choice.votes }} vote{{ choice.votes|pluralize }}</li>
+    {% endif %}
+    {% endfor %}
+</ul>
+
+<a href="{% url 'polls:detail' question.id %}">Vote again?</a>
