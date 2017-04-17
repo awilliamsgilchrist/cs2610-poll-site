@@ -10,7 +10,7 @@ class IndexView(generic.ListView):
     context_object_name = 'latestQuestionList'
     
     def get_queryset(self):
-        return Question.objects.order_by('-pub_date')[:5]
+        return Question.objects.order_by('-datePublished')[:5]
 
 class DetailView(generic.DetailView):
     model = Question
@@ -30,3 +30,6 @@ def vote(request, question_id):
         selected_choice.votes += 1
         selected_choice.save()
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+
+def handler404(request):
+    return render(request, 'polls/404.html', {'path': request.path})
